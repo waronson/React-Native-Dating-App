@@ -1,6 +1,7 @@
 import '../Config'
 import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
+import * as firebase from 'firebase'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
@@ -8,15 +9,15 @@ import createStore from '../Redux'
 // create our store
 const store = createStore()
 
-/**
- * Provides an entry point into our application.  Both index.ios.js and index.android.js
- * call this component first.
- *
- * We create our Redux store here, put it into a provider and then bring in our
- * RootContainer.
- *
- * We separate like this to play nice with React Native's hot reloading.
- */
+const firebaseConfig = {
+  apiKey: "AIzaSyCyMphbiB8-kuo5Xzp17W14AQH4K1WmcNo",
+  authDomain: "philanthrodate.firebaseapp.com",
+  databaseURL: "https://philanthrodate.firebaseio.com",
+  storageBucket: "gs://philanthrodate.appspot.com"
+}
+
+firebase.initializeApp(firebaseConfig)
+
 class App extends Component {
   render () {
     return (
